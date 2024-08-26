@@ -10,4 +10,14 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'Cereal Killer';
+  name = 'Triple Karmeliet';
+  life = 8;
+
+  incrementLife() {
+    console.log('+1 point de vie');
+  }
+
+  decrementLife() {
+    console.log('-1 point de vie');
+  }
 }
