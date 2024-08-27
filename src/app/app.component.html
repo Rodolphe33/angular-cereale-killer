@@ -1,6 +1,29 @@
 <router-outlet />
-<h1>{{ title }}</h1>
-<h2>{{ name }}</h2>
-<p>Degré d'alcool : {{ life }} %</p>
-<button (click)="incrementLife()">+</button>
-<button (click)="decrementLife()">-</button>
+<h1>Cereal Killer</h1>
+<img [src]="imageSrc()" [alt]="name()">
+<h2>{{ name() }}</h2>
+<p>Degré d'alcool : {{ life() }} %</p>
+<p>Force : {{ force() }} </p>
+
+<button (click)="incrementLife()" [disabled]="life() >= 70">+</button>
+<button (click)="decrementLife()" [disabled]="life() <= 0">-</button>
+
+<!-- @if (life() < 70) {
+  <button (click)="incrementLife()">+</button>
+}
+@if (life() > 0) {
+  <button (click)="decrementLife()">-</button>
+} -->
+@for (item of beers(); track item.name) {
+  <ul>
+    <h1>{{ item.name }}</h1>
+    <img [src]="item.image" [alt]="item.name">
+    <p>Level : {{ item.bitterness_level }}</p>
+    <li>ABV : {{ item.abv }}</li>
+    <li>EBC : {{ item.ebc }}</li>
+    <li>SRM : {{ item.srm }}</li>
+    <li>Type : {{ item.hop_type }}</li>
+  </ul>
+} @empty {
+  <li>There are no items.</li>
+}
