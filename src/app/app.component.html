@@ -1,29 +1,39 @@
-<router-outlet />
-<h1>Cereal Killer</h1>
-<img [src]="imageSrc()" [alt]="name()">
-<h2>{{ name() }}</h2>
-<p>Degré d'alcool : {{ life() }} %</p>
-<p>Force : {{ force() }} </p>
-
-<button (click)="incrementLife()" [disabled]="life() >= 70">+</button>
-<button (click)="decrementLife()" [disabled]="life() <= 0">-</button>
-
-<!-- @if (life() < 70) {
-  <button (click)="incrementLife()">+</button>
-}
-@if (life() > 0) {
-  <button (click)="decrementLife()">-</button>
-} -->
-@for (item of beers(); track item.name) {
-  <ul>
-    <h1>{{ item.name }}</h1>
-    <img [src]="item.image" [alt]="item.name">
-    <p>Level : {{ item.bitterness_level }}</p>
-    <li>ABV : {{ item.abv }}</li>
-    <li>EBC : {{ item.ebc }}</li>
-    <li>SRM : {{ item.srm }}</li>
-    <li>Type : {{ item.hop_type }}</li>
-  </ul>
-} @empty {
-  <li>There are no items.</li>
-}
+<nav class="navbar bg-suceess mb-5">
+  <div class="container text-white justify-content-center">
+    <h1>Cereal Killer</h1>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    @for (beer of beers(); track beer.id) {
+    <div class="col-md-3">
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div
+            class="col-md-4 d-flex align-items-center justify-content-center bg-light"
+          >
+            <img
+              class="img-fluid rounded-start"
+              [src]="beer.image"
+              [alt]="beer.name"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-body">{{ beer.name }}</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Level : {{ beer.bitterness_level }}
+              </h6>
+              <p class="card-text">
+                ABV : {{ beer.abv }} &nbsp; EBC : {{ beer.ebc }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    } @empty {
+    <p>There are no beers.</p>
+    }
+  </div>
+</div>
