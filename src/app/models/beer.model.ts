@@ -3,11 +3,10 @@ export interface Beer {
   name: string;
   description: string;
   brewery: string;
+  country: string;
   image: string;
   abv: number;
   ibu: number;
-  og: number;
-  fg: number;
   ebc: number;
   srm: number;
   hop_type: string;
